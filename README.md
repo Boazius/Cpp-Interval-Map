@@ -1,33 +1,4 @@
-# think-cell Recruitment Test Assignment
-
-## Foreword
-
-*Note: Before delving into the details of this recruitment test and my solution, I want to provide some context for those who might come across it.*
-
-This recruitment test is notorious within the software development community and has been in use since at least 2017. It has garnered considerable attention on various platforms, such as Reddit threads like [this one](https://www.reddit.com/r/recruitinghell/comments/ai03x4/a_9_hour_coding_challenge/).
-
-## The 9-Hour Challenge
-
-At the core of this recruitment test is a 9-hour coding challenge, a test that has remained unchanged over the years. Applicants are granted only two attempts to pass it successfully. Failure to meet the strict requirements within these attempts results in an automated rejection.
-
-The test presents a distinctive set of challenges, including **Stringent Time and Type Requirements:** Applicants must navigate complex requirements, including demanding runtime expectations and intricate type constraints. Some of these constraints, like the non-default constructibility of certain data, may not be immediately apparent.
-
-## Sharing My Solution
-
-As someone who has faced this test, I have decided to publish my solution here. My intention is to provide insight into my approach, share the knowledge I gained from this experience, and potentially help others who may find themselves in a similar situation.
-
-I have managed to succeed in 3 out of 4 requirements - the **Running time** requirement unfortunately was not up to their standards.
-This is because:
-- the cleanup which removes duplicates but requires iterating on the map in O(n)
-  - You must find a way to not generate duplicate values when inserting and removing values.
-- emplacing values into the map is O(logn).
-  - You need to emplace into the map while iterating on it, in O(1).
-
-
-So, whether you're here to explore my solution or contemplating taking on this well-known but often perceived as **unfair and insulting** test, I hope this publication helps you gain insight into the experience and the unique challenges faced by software development applicants.
-
-
-# Task Description
+# Interval Map 
 
 `interval_map<K,V>` is a data structure that associates keys of type `K` with values of type `V`. It efficiently handles situations where intervals of consecutive keys are associated with the same value. Your task is to implement the `assign` member function for this data structure.
 
@@ -113,28 +84,5 @@ public:
 
 ---
 
-### Task Requirements:
-
-1. **Type Requirements Are Met:**
-    - Adhere strictly to the specification of the key and value types as given in the task description.
-    - Solutions often assume additional operations beyond those explicitly stated (e.g., assuming `V` is default-constructible using `std::map::operator[]`). Ensure compliance to the specified operations only.
-
-2. **Correctness:**
-    - Ensure your program generates a functional `interval_map` as described.
-    - Pay careful attention to iterator validity. Dereferencing end iterators is illegal.
-    - Consider using a checking STL implementation (e.g., shipped with Visual C++ or GCC) to validate iterators.
-    - Common issues involve incorrect associations between intervals and values or code paths that lead to invalid or end iterator dereferencing.
-
-3. **Canonicity:**
-    - The representation in `m_map` must be canonical.
-    - Avoid consecutive map entries containing the same value or repeating `m_valBegin` at the start of the map.
-    - Solutions often create non-canonical representations, leading to consecutive map entries with identical values.
-
-4. **Running Time:**
-    - Assume your implementation is part of a library and strive for big-O optimality.
-    - Minimize unnecessary operations on `K` and `V`, including constructions, destructions, and assignments.
-    - Limit the use of amortized O(log N) operations to one in contrast to O(1) operations in `m_map`.
-    - Overloads of `std::map::insert/emplace/delete` that need to find an element position have amortized O(log N) time, while those using an iterator have amortized O(1) time if pointing to the correct position.
-    - Prioritize simplicity over marginal speed improvements unless crucial for the algorithm's performance.
 
 
